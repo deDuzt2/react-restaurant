@@ -32,7 +32,7 @@ export const Card = ({ name, src, price, contain, weight, id }) => {
 					<div className="price">{price} ₽</div>
 					<div onClick={onClickPlus} className="button">
 						<div className="button_title">В корзину </div>
-						<img src="/img/menu/buy.svg" alt="buy" />
+						<img src="/img/menu/Buy.svg" alt="buy" />
 					</div>
 				</div>
 			}
