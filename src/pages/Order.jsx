@@ -19,7 +19,7 @@ export const Order = () => {
 		for (let i = 0; i < cartItems.length; i++) {
 			let obj = cartItems[i];
 			(async function clear() {
-				await axios.delete(`http://localhost:3004/cart/${obj.id}`);
+				await axios.delete(`https://restaurant-json-server11.herokuapp.com/cart/${obj.id}`);
 			})()
 		}
 		setCartItems([]);

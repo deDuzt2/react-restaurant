@@ -15,13 +15,12 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(cartItems)
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const itemsResponse = await axios.get('http://localhost:3004/menu');
-        const cartResponse = await axios.get('http://localhost:3004/cart');
+        const itemsResponse = await axios.get('https://restaurant-json-server11.herokuapp.com/menu');
+        const cartResponse = await axios.get('https://restaurant-json-server11.herokuapp.com/cart');
         setCartItems(cartResponse.data);
         setMenuItems(itemsResponse.data);
         setIsLoading(false);
@@ -40,14 +39,14 @@ function App() {
     try {
       if (cartItems.find(itmCrt => itmCrt.id === obj.id)) {
         let count = cartItems.find(itmCrt => itmCrt.id === obj.id).count;
-        await axios.delete(`http://localhost:3004/cart/${obj.id}`);
+        await axios.delete(`https://restaurant-json-server11.herokuapp.com/cart/${obj.id}`);
         setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
         obj.count = count + 1;
         setCartItems((prev) => [...prev, obj]);
-        await axios.post('http://localhost:3004/cart', obj);
+        await axios.post('https://restaurant-json-server11.herokuapp.com/cart', obj);
       } else {
         obj.count = 1;
-        await axios.post('http://localhost:3004/cart', obj);
+        await axios.post('https://restaurant-json-server11.herokuapp.com/cart', obj);
         setCartItems((prev) => [...prev, obj]);
       }
     } catch (error) {
@@ -59,12 +58,12 @@ function App() {
   const removeItemFromCart = async (obj) => {
     try {
       if (obj.count > 1) {
-        await axios.delete(`http://localhost:3004/cart/${obj.id}`);
+        await axios.delete(`https://restaurant-json-server11.herokuapp.com/cart/${obj.id}`);
         obj.count = obj.count - 1;
-        await axios.post('http://localhost:3004/cart', obj);
+        await axios.post('https://restaurant-json-server11.herokuapp.com/cart', obj);
         setCartItems((prev) => [...prev]);
       } else {
-        await axios.delete(`http://localhost:3004/cart/${obj.id}`);
+        await axios.delete(`https://restaurant-json-server11.herokuapp.com/cart/${obj.id}`);
         setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
       }
     } catch (error) {
@@ -75,7 +74,7 @@ function App() {
 
   const fullRemoveItemFromCart = async (obj) => {
     try {
-      await axios.delete(`http://localhost:3004/cart/${obj.id}`);
+      await axios.delete(`https://restaurant-json-server11.herokuapp.com/cart/${obj.id}`);
       setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
     } catch (error) {
       alert('Произошла ошибка при удалении из корзины');
