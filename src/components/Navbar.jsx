@@ -14,7 +14,7 @@ export const Navbar = ({ items, isLoading }) => {
 		{ title: "Рыбные блюда", href: '#', link: '/fish', active: false },
 		{ title: "Супы", href: '#', link: '/soups', active: false },
 		{ title: "Гриль меню", href: '#', link: '/grill', active: false },
-		{ title: "Десерт", href: '#', link: '/dessert', active: false },
+		{ title: "Десерты", href: '#', link: '/dessert', active: false },
 		{ title: "Напитки", href: '#', link: '/drinks', active: false }
 	]
 
